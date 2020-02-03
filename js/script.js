@@ -31,7 +31,14 @@ var repository = [
     }
 ];
 
-var pokeheight = repository.height;
 for (let i = 0; i < repository.length; i++) {
     let pokemon = repository[i];
+
+if (pokemon.height > 1.5) {
+    document.write(
+        pokemon.name + " " + "(" + "height = " + pokemon.height + ")" + " " + "Wow, that's big! ");
+  }
+else {
+    document.write(pokemon.name + " (" + "height = " + pokemon.height + ") ");
+  }
 }
