@@ -31,24 +31,19 @@ var repository = [
     }
 ];
 
-for (let i = 0; i < repository.length; i++) {
+/* for (let i = 0; i < repository.length; i++) {
     let pokemon = repository[i];
 
-if (pokemon.height > 1.5) {
+ if (pokemon.height > 1.5) {
     document.write(
         pokemon.name + " (height = " + pokemon.height + ") Wow, that's big! ");
   }
 else {
     document.write(pokemon.name + " (height = " + pokemon.height + ") ");
   }
-}
+} */
 
-function divide (dividend, divisor) {
-  if (divisor === 0) {
-    document.write ("You're trying to divide by zero.");
-  }
-  else {
-    var result = dividend / divisor;
-    return result;
-  }
-}
+Object.keys(repository).forEach(function(property) {
+    console.log(repository[property]);
+  });
+ 
