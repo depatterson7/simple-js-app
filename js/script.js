@@ -42,3 +42,13 @@ else {
     document.write(pokemon.name + " (height = " + pokemon.height + ") ");
   }
 }
+
+function divide (dividend, divisor) {
+  if (divisor === 0) {
+    document.write ("You're trying to divide by zero.");
+  }
+  else {
+    var result = dividend / divisor;
+    return result;
+  }
+}
