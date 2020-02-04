@@ -36,9 +36,9 @@ for (let i = 0; i < repository.length; i++) {
 
 if (pokemon.height > 1.5) {
     document.write(
-        pokemon.name + " " + "(" + "height = " + pokemon.height + ")" + " " + "Wow, that's big! ");
+        pokemon.name + " (height = " + pokemon.height + ") Wow, that's big! ");
   }
 else {
-    document.write(pokemon.name + " (" + "height = " + pokemon.height + ") ");
+    document.write(pokemon.name + " (height = " + pokemon.height + ") ");
   }
 }
