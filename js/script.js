@@ -1,3 +1,4 @@
+(function () {
 var repository = [
     { 
       name: 'Charmander', 
@@ -30,6 +31,9 @@ var repository = [
       abilities: ['keen-eye', 'tangled-feet', 'big-pecks']
     }
 ];
+}) ();
+
+console.log(repository);
 
 /* for (let i = 0; i < repository.length; i++) {
     let pokemon = repository[i];
@@ -43,7 +47,7 @@ else {
   }
 } */
 
-Object.keys(repository).forEach(function(property) {
-    console.log(repository[property]);
-  });
+/* repository.forEach(function(property) {
+    console.log(property);
+  }); */
  
