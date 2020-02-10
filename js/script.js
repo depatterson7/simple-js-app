@@ -1,5 +1,5 @@
-(function () {
-var repository = [
+var pokemonRepository = (function () {
+    var repository = [
     { 
       name: 'Charmander', 
       height: 0.6, 
@@ -31,9 +31,23 @@ var repository = [
       abilities: ['keen-eye', 'tangled-feet', 'big-pecks']
     }
 ];
+
+function add(pokemon) {
+    repository.push(pokemon);
+}
+
+function getAll() {
+    return repository;
+}
+
+return {
+    add: add,
+    getAll: getAll
+};
 }) ();
 
-console.log(repository);
+console.log(pokemonRepository.getAll());
+
 
 /* for (let i = 0; i < repository.length; i++) {
     let pokemon = repository[i];
@@ -47,7 +61,3 @@ else {
   }
 } */
 
-/* repository.forEach(function(property) {
-    console.log(property);
-  }); */
- 
