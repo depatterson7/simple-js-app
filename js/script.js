@@ -33,17 +33,20 @@ var pokemonRepository = (function () {
     }
 ];
 
-//add new data
+//adds new data
 function add(pokemon) {
     repository.push(pokemon);
-}
 
-//pull all data
+//pulls all data
 function getAll() {
     return repository;
 }
 
-//add list for each object
+function showDetails() {
+  console.log(pokemon);
+}
+
+//adds list for each object
 function addListItem(pokemon) {
   var $pokemonList = document.querySelector('.pokemon-list');
   var $listItem = document.createElement('li');
@@ -54,11 +57,10 @@ function addListItem(pokemon) {
   $button.innerText = pokemon.name;
   $button.classList.add('list-button');
   $listItem.classList.add('button-style');
-
-
-
-
-
+  $button.addEventListener('click', function(event) {
+    showDetails(pokemon);
+  });
+}
 
 
 

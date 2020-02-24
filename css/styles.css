@@ -15,3 +15,7 @@ body {
     border: #F0F8FF solid 1px;
     cursor: pointer;
   }
+
+  .hidden {
+    display: none;
+  }
