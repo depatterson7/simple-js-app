@@ -68,7 +68,6 @@ return {
 })();
 // end of IIFE
 
-// pokemonRepository.loadList().then(function(){
   pokemonRepository.getAll().forEach(function(pokemon) {
     console.log(pokemon);
     pokemonRepository.addListItem(pokemon);
