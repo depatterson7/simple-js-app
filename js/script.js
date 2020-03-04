@@ -60,27 +60,83 @@ function loadDetails(item) {
   });
 }
 
+//This function will show a modal including title and text
+function () {
+  var $modalContainer = document.querySelector('#modal-container');
+  
+  function showModal(title, text) {
+    $modalContainer.innerHTML = '';
+  
+    var modal = document.createElement('div');
+    modal.classList.add('modal');
+
+//Adds new modal content
+var closeButtonElement = document.createElement('button');
+closeButtonElement.classList.add('modal-close');
+closeButtonElement.innerText = 'Close';
+closeButtonElement.addEventListener('click', hideModal);
+
+var modalName = document.createElement('h1');
+modalName.innerText = title;
+
+var modalHeight = document.createElement('p');
+modalHeight.innerText = text;
+  
+modal.append(closeButtonElement);
+modal.append(imageElement);
+modal.append(modalName);
+modal.append(modalHeight);
+$modalContainer.appendChild(modal);
+
+$modalContainer.classList.add('is-visible');
+}
+
+function hideModal () {
+  $modalContainer.classList.remove('is-visible');
+}
+
+document.querySelector('#show-modal').addEventListener('click', () => {
+  showModal('Modal title', 'This is the modal content!');
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+    hideModal();
+  }
+});
+
+$modalContainer.addEventListener('click', (e) => {
+  var target = e.target;
+  if (target === $modalContainer) {
+    hideModal();
+  }
+});
+
+//this function will show the details of each Pokemon
 function showDetails(item) {
   pokemonRepository.loadDetails(item).then(function() {
-    console.log(item);
-  }); 
+    pokemonRepository.showModal(item);
+  }; 
+});
 
 return {
   add: add,
   getAll: getAll,
-  search: search,
   addListItem: addListItem,
-  loadList: loadList
+  loadList: loadList,
   loadDetails: loadDetails,
   showDetails: showDetails,
+  showModal: showModal,
+  hideModal: hideModal,
 };
 
+});
 })();
 // end of IIFE
 
-pokemon.Repository.loadList().then(function(){
+pokemonRepository.loadList().then(function(){
   pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemon.Repository.addListItem(pokemon);
+    pokemonRepository.addListItem(pokemon);
   });  
 }); 
  
