@@ -2,6 +2,7 @@
 var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  var $modalContainer = document.querySelector('#modal-container');
 
 //adds new data
 function add(pokemon) {
@@ -61,11 +62,8 @@ function loadDetails(item) {
 }
 
 //This function will show a modal including title and text
-function () {
-  var $modalContainer = document.querySelector('#modal-container');
-  
-  function showModal(title, text) {
-    $modalContainer.innerHTML = '';
+function showModal(item) {
+  $modalContainer.innerHTML = '';
   
     var modal = document.createElement('div');
     modal.classList.add('modal');
@@ -77,10 +75,13 @@ closeButtonElement.innerText = 'Close';
 closeButtonElement.addEventListener('click', hideModal);
 
 var modalName = document.createElement('h1');
-modalName.innerText = title;
+modalName.innerText = item.name;
 
 var modalHeight = document.createElement('p');
-modalHeight.innerText = text;
+modalHeight.innerText = item.height;
+
+var imageElement = document.createElement('img');
+imageElement.src = item.imageUrl;
   
 modal.append(closeButtonElement);
 modal.append(imageElement);
@@ -94,6 +95,13 @@ $modalContainer.classList.add('is-visible');
 function hideModal () {
   $modalContainer.classList.remove('is-visible');
 }
+
+//This function will show details of all Pokemon
+function showDetails(item) {
+  pokemonRepository.loadDetails(item).then(function() {
+    pokemonRepository.showModal(item);
+  }) 
+};
 
 document.querySelector('#show-modal').addEventListener('click', () => {
   showModal('Modal title', 'This is the modal content!');
@@ -112,13 +120,6 @@ $modalContainer.addEventListener('click', (e) => {
   }
 });
 
-//this function will show the details of each Pokemon
-function showDetails(item) {
-  pokemonRepository.loadDetails(item).then(function() {
-    pokemonRepository.showModal(item);
-  }; 
-});
-
 return {
   add: add,
   getAll: getAll,
@@ -130,7 +131,6 @@ return {
   hideModal: hideModal,
 };
 
-});
 })();
 // end of IIFE
 
